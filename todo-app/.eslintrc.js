@@ -22,5 +22,6 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 0,
     'max-len': 0,
+    'jsx-a11y/no-autofocus': 'off',
   },
 };
