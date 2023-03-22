@@ -1,6 +1,8 @@
 import React from 'react';
 import './Section.css';
 
+// import Note from '../Note/Note';
+
 export default function Section() {
   return (
     <section className="main-content">
