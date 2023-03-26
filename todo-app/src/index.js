@@ -4,14 +4,17 @@ import './index.css';
 // import './styles/reset.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './components/App/App';
-import { store } from './store/store';
+import store, { persistor } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    {/* <React.StrictMode> */}
-    <App />
-    {/* </React.StrictMode> */}
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loadind={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>,
 );
