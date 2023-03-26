@@ -1,22 +1,26 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeTodo } from '../../store/slicer/todoSlicer';
+import { removeTodo, toggleTodo } from '../../store/slicer/todoSlicer';
 
-export default function Note({ id, statusClass, text }) {
+export default function Note({ id, completed, text }) {
   const dispatch = useDispatch();
+
   const removeNote = () => {
-    // console.log(id);
     dispatch(removeTodo(id));
   };
 
+  const toggledNote = () => {
+    dispatch(toggleTodo(id));
+  };
+
   return (
-    <li key={id} id={id} className={statusClass}>
+    <li key={id} id={id} className={completed ? 'completed' : ''}>
       <div className="div">
-        <input type="checkbox" className="toggle" />
+        <input type="checkbox" className="toggle" onChange={toggledNote} checked={completed} />
         <label htmlFor="noteStatus">
           {text}
         </label>
-        <div className="deleteBtn" type="button" onClick={removeNote} />
+        <button className="deleteBtn" type="button" onClick={removeNote} aria-label="remove-button" />
       </div>
     </li>
   );

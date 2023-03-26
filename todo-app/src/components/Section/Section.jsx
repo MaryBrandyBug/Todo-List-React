@@ -11,11 +11,12 @@ export default function Section() {
       <input id="toggle-all" className="toggle-all" type="checkbox" />
       <label htmlFor="toggle-all" />
       <ul className="todo-list">
-        {allNotes.map((item) => <Note key={item.id} id={item.id} text={item.text} className={item.checked ? 'completed' : ''} />)}
+        {allNotes.map((item) => <Note key={item.id} id={item.id} text={item.text} completed={item.completed} />)}
       </ul>
       <footer className="footer">
         <span className="need-to-do">
-          <strong>0</strong>
+          <strong>{allNotes.length}</strong>
+          {' '}
           items left
         </span>
         <ul className="filters">
