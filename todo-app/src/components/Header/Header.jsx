@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { checkLength } from '../../modules/utils/utils';
 import './Header.css';
+import { addTodo } from '../../store/slicer/todoSlicer';
 
 export default function Header() {
   const dispatch = useDispatch();
-  const [newNote, setNewNote] = useState({ note: '' });
-
-  const note = useSelector((store) => store.inputStore.inputText);
+  const [newNote, setNewNote] = useState('');
 
   const handleInput = (e) => {
-    setNewNote({ ...newNote, [e.target.name]: e.target.value });
+    setNewNote(e.target.value);
   };
 
+  // const clearInput = () => { setNewNote(''); };
   useEffect(() => {
     const handleClick = (event) => {
-      if (event.target.className !== 'new-note' && checkLength(newNote.note)) {
-        console.log(newNote.note);
+      if (event.target.className !== 'new-note' && checkLength(newNote)) {
+        dispatch(addTodo(newNote));
+        setNewNote('');
       }
     };
-
     window.addEventListener('click', handleClick);
 
     return () => {

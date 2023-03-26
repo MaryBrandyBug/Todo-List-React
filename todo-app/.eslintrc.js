@@ -23,5 +23,8 @@ module.exports = {
     'react/prop-types': 0,
     'max-len': 0,
     'jsx-a11y/no-autofocus': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'prefer-const': 'off',
   },
 };
