@@ -12,7 +12,6 @@ export default function Header() {
     setNewNote(e.target.value);
   };
 
-  // const clearInput = () => { setNewNote(''); };
   useEffect(() => {
     const handleClick = (event) => {
       if (event.target.className !== 'new-note' && checkLength(newNote)) {
