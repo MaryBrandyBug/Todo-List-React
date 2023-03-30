@@ -14,11 +14,24 @@ const todoSlice = createSlice({
       });
     },
     removeTodo(state, action) {
+      // eslint-disable-next-line no-param-reassign
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+    },
+    toggleTodo(state, action) {
+      const toggledItem = state.todos.find((todo) => todo.id === action.payload);
+      toggledItem.completed = !toggledItem.completed;
+    },
+    toggleAllTodo(state, action) {
+      action.payload.forEach((item) => {
+        const toggledItem = state.todos.find((todo, i) => i === item);
+        toggledItem.completed = !toggledItem.completed;
+      });
     },
   },
 
 });
 
-export const { addTodo, removeTodo } = todoSlice.actions;
+export const {
+  addTodo, removeTodo, toggleTodo, toggleAllTodo,
+} = todoSlice.actions;
 export default todoSlice.reducer;
