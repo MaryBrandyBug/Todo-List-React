@@ -4,6 +4,7 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState: {
     todos: [],
+    toggler: '',
   },
   reducers: {
     addTodo(state, action) {
@@ -27,11 +28,17 @@ const todoSlice = createSlice({
         toggledItem.completed = !toggledItem.completed;
       });
     },
+    untoggleAllTodo(state, action) {
+      action.payload.forEach((item) => {
+        const untoggledItem = state.todos.find((todo, i) => i === item);
+        untoggledItem.completed = !untoggledItem.completed;
+      });
+    },
   },
 
 });
 
 export const {
-  addTodo, removeTodo, toggleTodo, toggleAllTodo,
+  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo,
 } = todoSlice.actions;
 export default todoSlice.reducer;

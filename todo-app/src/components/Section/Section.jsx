@@ -2,22 +2,29 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Section.css';
 import Note from '../Note/Note';
-import { toggleAllTodo } from '../../store/slicer/todoSlicer';
+import { toggleAllTodo, untoggleAllTodo } from '../../store/slicer/todoSlicer';
 
 export default function Section() {
   const dispatch = useDispatch();
   const allNotes = useSelector((state) => state.todos.todos);
 
+  const toggler = allNotes.map((item) => item.completed).includes(false);
+
   const toggleAll = () => {
     const currentUncompleted = allNotes.map((item) => item.completed);
     if (currentUncompleted.includes(true) && currentUncompleted.includes(false)) {
-      const uncompletedNotes = allNotes.map((item, i) => (!item.completed ? i : null)).filter((item) => item);
+      const uncompletedNotes = allNotes.map((item, i) => (!item.completed ? i : null)).filter((item) => item !== null);
       dispatch(toggleAllTodo(uncompletedNotes));
     }
+    if (!currentUncompleted.includes(false) || !currentUncompleted.includes(true)) {
+      const completedNotes = allNotes.map((item, i) => i);
+      dispatch(untoggleAllTodo(completedNotes));
+    }
   };
+
   return (
     <section className="main-content">
-      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} />
+      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} checked={!toggler} />
       <label htmlFor="toggle-all" />
       <ul className="todo-list">
         {allNotes.map((item) => <Note key={item.id} id={item.id} text={item.text} completed={item.completed} />)}
