@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './Section.css';
 import Note from '../Note/Note';
-import { toggleAllTodo, untoggleAllTodo } from '../../store/slicer/todoSlicer';
+import { toggleAllTodo, untoggleAllTodo, clearAllCompleted } from '../../store/slicer/todoSlicer';
 
 export default function Section() {
   const dispatch = useDispatch();
@@ -22,9 +22,14 @@ export default function Section() {
     }
   };
 
+  const clearCompleted = () => {
+    const completedNotes = allNotes.filter((item) => item.completed).map((item) => item.id);
+    dispatch(clearAllCompleted(completedNotes));
+  };
+
   return (
     <section className="main-content">
-      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} checked={!toggler} />
+      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} checked={toggler.length ? !toggler : false} />
       <label htmlFor="toggle-all" />
       <ul className="todo-list">
         {allNotes.map((item) => <Note key={item.id} id={item.id} text={item.text} completed={item.completed} />)}
@@ -46,7 +51,7 @@ export default function Section() {
             <a href="#/completed" className="completed-notes">Completed</a>
           </li>
         </ul>
-        <button type="button" className="clear-completed">Clear completed</button>
+        <button type="button" className="clear-completed" onClick={clearCompleted}>Clear completed</button>
       </footer>
     </section>
   );
