@@ -9,6 +9,7 @@ export default function Section() {
   const allNotes = useSelector((state) => state.todos.todos);
 
   const toggler = allNotes.map((item) => item.completed).includes(false);
+  const itemsLeftNumber = allNotes.filter((item) => item.completed === false).length;
 
   const toggleAll = () => {
     const currentUncompleted = allNotes.map((item) => item.completed);
@@ -36,7 +37,7 @@ export default function Section() {
       </ul>
       <footer className="footer">
         <span className="need-to-do">
-          <strong>{allNotes.length}</strong>
+          <strong>{itemsLeftNumber}</strong>
           {' '}
           items left
         </span>
