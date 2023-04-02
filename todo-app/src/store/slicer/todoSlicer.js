@@ -4,7 +4,6 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState: {
     todos: [],
-    toggler: '',
   },
   reducers: {
     addTodo(state, action) {
@@ -34,11 +33,17 @@ const todoSlice = createSlice({
         untoggledItem.completed = !untoggledItem.completed;
       });
     },
+    clearAllCompleted(state, action) {
+      action.payload.forEach((item) => {
+      // eslint-disable-next-line no-param-reassign
+        state.todos = state.todos.filter((todo) => todo.id !== item);
+      });
+    },
   },
 
 });
 
 export const {
-  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo,
+  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo, clearAllCompleted,
 } = todoSlice.actions;
 export default todoSlice.reducer;
