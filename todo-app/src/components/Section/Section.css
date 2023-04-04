@@ -78,15 +78,20 @@ li .edit:focus {
     justify-content: space-between;
 }
 
-.footer .filters li a {
+.footer .filters li button {
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
     text-decoration: none;
     -moz-text-decoration-style: none;
     -webkit-text-decoration-style: none;
-    width: 89px;
+    /* width: 89px; */
     height: 25px;
     padding: 3px 7px;
     color: black;
     border-radius: 3px;
+    border: none;
+    cursor: pointer;
 }
 
 .footer .filters li a:visited {

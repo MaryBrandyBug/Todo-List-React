@@ -4,6 +4,7 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState: {
     todos: [],
+    filter: 'all',
   },
   reducers: {
     addTodo(state, action) {
@@ -39,11 +40,15 @@ const todoSlice = createSlice({
         state.todos = state.todos.filter((todo) => todo.id !== item);
       });
     },
+    changeFilter(state, action) {
+      // eslint-disable-next-line no-param-reassign
+      state.filter = action.payload;
+    },
   },
 
 });
 
 export const {
-  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo, clearAllCompleted,
+  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo, clearAllCompleted, changeFilter,
 } = todoSlice.actions;
 export default todoSlice.reducer;
