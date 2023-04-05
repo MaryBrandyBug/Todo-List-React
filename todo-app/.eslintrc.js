@@ -26,5 +26,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'prefer-const': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
