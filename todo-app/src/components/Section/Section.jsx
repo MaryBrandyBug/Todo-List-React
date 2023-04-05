@@ -15,7 +15,7 @@ export default function Section() {
   const allNotes = useSelector((state) => state.todos.todos);
   const filter = useSelector((state) => state.todos.filter);
 
-  const itemsLeftNumber = allNotes.filter((item) => item.completed === false).length;
+  const itemsCompleted = allNotes.filter((item) => item.completed === true).length;
 
   const toggleAll = () => {
     const currentUncompleted = allNotes.map((item) => item.completed);
@@ -32,7 +32,7 @@ export default function Section() {
   const allTasks = filterTasks(allNotes, filter).map((item) => <Note key={item.id} id={item.id} text={item.text} completed={item.completed} />);
   return (
     <section className="main-content">
-      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} checked={!itemsLeftNumber} />
+      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} checked={allNotes.length && allNotes.length === itemsCompleted ? 1 : 0} />
       <label htmlFor="toggle-all" />
       <ul className="todo-list">
         {allTasks}
