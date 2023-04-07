@@ -26,10 +26,17 @@ export default function Header() {
     };
   }, [newNote]);
 
+  const adding = (event) => {
+    if (event.key === 'Enter') {
+      dispatch(addTodo(newNote));
+      setNewNote('');
+    }
+  };
+
   return (
     <header className="header">
       <h1>todos</h1>
-      <input type="text" onChange={handleInput} name="note" className="new-note" placeholder="What needs to be done?" autoFocus />
+      <input type="text" value={newNote} onChange={handleInput} onClick={() => setNewNote('')} onKeyDown={adding} name="note" className="new-note" placeholder="What needs to be done?" autoFocus />
     </header>
   );
 }
