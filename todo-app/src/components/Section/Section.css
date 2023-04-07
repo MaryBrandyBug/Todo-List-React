@@ -76,6 +76,12 @@ li .edit:focus {
 
     background: #fff;
     border-radius: 9px;
+
+    color: #504F51;
+}
+
+.footer span {
+    color: #a0a0a0;
 }
 
 .footer .filters {
@@ -96,17 +102,13 @@ li .edit:focus {
     text-decoration: none;
     -moz-text-decoration-style: none;
     -webkit-text-decoration-style: none;
-    color: black;
+    color: #a0a0a0;
 
     background-color: transparent;
     border-radius: 3px;
     border: none;
 
     cursor: pointer;
-}
-
-.footer .filters li a:visited {
-    color: black;
 }
 
 .footer .clear-completed {
@@ -116,7 +118,7 @@ li .edit:focus {
     font-family: inherit;
     font-weight: inherit;
     font-size: 15px;
-    color: black;
+    color: #a0a0a0;
     
     border: none;
     background: none;
