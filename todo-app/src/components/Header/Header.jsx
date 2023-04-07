@@ -27,7 +27,7 @@ export default function Header() {
   }, [newNote]);
 
   const adding = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && checkLength(newNote)) {
       dispatch(addTodo(newNote));
       setNewNote('');
     }
@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <header className="header">
       <h1>todos</h1>
-      <input type="text" value={newNote} onChange={handleInput} onClick={() => setNewNote('')} onKeyDown={adding} name="note" className="new-note" placeholder="What needs to be done?" autoFocus />
+      <input type="text" value={newNote} onChange={handleInput} onKeyDown={adding} name="note" className="new-note" placeholder="What needs to be done?" autoFocus />
     </header>
   );
 }
