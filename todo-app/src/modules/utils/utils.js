@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export function checkLength(note) {
   if (note) {
     const verification = note.trim();

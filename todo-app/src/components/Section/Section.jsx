@@ -30,6 +30,7 @@ export default function Section() {
   };
 
   const allTasks = filterTasks(allNotes, filter).map((item) => <Note key={item.id} id={item.id} text={item.text} completed={item.completed} />);
+
   return (
     <section className="main-content">
       <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} checked={allNotes.length && allNotes.length === itemsCompleted ? 1 : 0} />

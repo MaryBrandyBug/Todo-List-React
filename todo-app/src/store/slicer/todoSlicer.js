@@ -44,11 +44,17 @@ const todoSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.filter = action.payload;
     },
+    changeTodoText(state, action) {
+      const item = state.todos.find((todo) => todo.id === action.payload.id);
+      if (action.payload) {
+        item.text = action.payload.editing;
+      }
+    },
   },
 
 });
 
 export const {
-  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo, clearAllCompleted, changeFilter,
+  addTodo, removeTodo, toggleTodo, toggleAllTodo, untoggleAllTodo, clearAllCompleted, changeFilter, changeTodoText,
 } = todoSlice.actions;
 export default todoSlice.reducer;
