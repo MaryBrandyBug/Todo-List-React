@@ -27,5 +27,6 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'prefer-const': 'off',
     'import/prefer-default-export': 'off',
+    'no-param-reassign': 'off',
   },
 };

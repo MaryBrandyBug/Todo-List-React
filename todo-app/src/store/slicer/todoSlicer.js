@@ -15,7 +15,6 @@ const todoSlice = createSlice({
       });
     },
     removeTodo(state, action) {
-      // eslint-disable-next-line no-param-reassign
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
     toggleTodo(state, action) {
@@ -36,12 +35,10 @@ const todoSlice = createSlice({
     },
     clearAllCompleted(state, action) {
       action.payload.forEach((item) => {
-      // eslint-disable-next-line no-param-reassign
         state.todos = state.todos.filter((todo) => todo.id !== item);
       });
     },
     changeFilter(state, action) {
-      // eslint-disable-next-line no-param-reassign
       state.filter = action.payload;
     },
     changeTodoText(state, action) {
