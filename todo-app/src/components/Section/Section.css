@@ -12,6 +12,7 @@
     font-family: inherit;
     font-weight: inherit;
     font-style: italic;
+    word-break: break-all;
 
     background: #fff;
     border-radius: 10px;
